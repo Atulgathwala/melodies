@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
+import NavbarConatiner from "./Components/NavbarComponents/NavbarConatiner";
+import MainSideBar from "./Components/pages/MainSideBar";
 
 const App = () => {
-  return (
-    <div>App</div>
-  )
-}
+  let [sideBarToggle, setSideBarToggle] = useState(false);
 
-export default App
+  let handleSideBarToggle = () => {
+    setSideBarToggle(!sideBarToggle);
+  };
+  return (
+    <section className="bg-[#181818] h-[200vh] flex gap-2">
+      <MainSideBar />
+      <section className="basis-[82%] pt-[36px] pl-[20px]">
+        <Outlet />
+      </section>
+    </section>
+  );
+};
+
+export default App;

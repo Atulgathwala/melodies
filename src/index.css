@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap');
+
+body{
+    color: white;
+    /* font-family: "Vazirmatn", serif; */
+}
+
+
+.sidebarliHover:hover{
+    size:20px;
+    padding: 2px 8px;
+    background-color: #EE10B0;
+    border-radius: 9px;
+    font-weight: 600;
+
+
+}
+
+
