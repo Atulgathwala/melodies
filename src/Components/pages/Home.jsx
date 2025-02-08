@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import NavbarConatiner from "../NavbarComponents/NavbarConatiner";
 import { NavLink } from "react-router-dom";
+import Register from "../auth/Register";
+import Login from "../auth/Login";
+import Modal from "../Modal/Modal";
 
 const Home = () => {
   return (
     <section className=" mainHomeSection ">
-      <article className="bg-[url('https://i.ibb.co/6cRkVX1j/pixelcut-export.png')] bg-cover bg-center h-[70vh] w-[98%] py-4 px-8  rounded-2xl relative">
+      <article className="bg-[url('https://i.ibb.co/6cRkVX1j/pixelcut-export.png')] bg-cover bg-center h-[75vh] w-[98%] py-4 px-8  rounded-2xl relative">
         <NavbarConatiner />
 
         <section className="h-[314px] w-[352px]  absolute bottom-[60px] p-[10px] flex flex-col gap-[16px]">
@@ -29,7 +32,9 @@ const Home = () => {
           </div>
         </section>
       </article>
-      after
+      {/* after Image */}
+
+      {/* <Register /> */}
     </section>
   );
 };

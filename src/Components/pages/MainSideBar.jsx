@@ -10,7 +10,7 @@ import { CgTimelapse } from "react-icons/cg";
 import { RiPlayListFill } from "react-icons/ri";
 
 const MainSideBar = (props) => {
-  console.log(props);
+
 
   let { toggle, handleSideBarToggle } = props;
   return (

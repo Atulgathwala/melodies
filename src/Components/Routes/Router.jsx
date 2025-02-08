@@ -2,6 +2,11 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../../App";
 import Home from "../pages/Home";
+import UserMainContainer from "../User/UserMainContainer";
+import MyAccount from "../User/MyAccount";
+import UpdatePicture from "../User/UpdatePicture";
+import AddProfile from "../User/AddProfile";
+import DeleteAccount from "../User/DeleteAccount";
 
 export const Routers = createBrowserRouter([
   {
@@ -52,6 +57,29 @@ export const Routers = createBrowserRouter([
       {
         path: "logout",
         element: <h1>Logout</h1>,
+      },
+    ],
+  },
+
+  {
+    path: "/user-profile",
+    element: <UserMainContainer />,
+    children: [
+      {
+        index: true,
+        element: <MyAccount />,
+      },
+      {
+        path: "update-picture",
+        element: <UpdatePicture />,
+      },
+      {
+        path: "add-profile",
+        element: <AddProfile />,
+      },
+      {
+        path: "delete-account",
+        element: <DeleteAccount />,
       },
     ],
   },
