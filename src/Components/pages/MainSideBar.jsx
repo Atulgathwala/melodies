@@ -10,8 +10,6 @@ import { CgTimelapse } from "react-icons/cg";
 import { RiPlayListFill } from "react-icons/ri";
 
 const MainSideBar = (props) => {
-
-
   let { toggle, handleSideBarToggle } = props;
   return (
     <section className="basis-[16%] bg-[#181818] pt-[48px] pb-[32px] pl-[64px] pr-[32px] border-r-[2px] border-[#EE10B0]">
@@ -28,6 +26,17 @@ const MainSideBar = (props) => {
             <ul>
               <li>
                 <NavLink
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
                   to={"/"}
                   className={
                     "flex items-center gap-[8px]  font-[500] h-[40px] sidebarliHover"
@@ -41,6 +50,17 @@ const MainSideBar = (props) => {
               </li>
               <li>
                 <NavLink
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
                   to={"/discover"}
                   className={
                     "flex items-center gap-[8px]  font-[500] h-[40px] sidebarliHover"
@@ -54,6 +74,17 @@ const MainSideBar = (props) => {
               </li>
               <li>
                 <NavLink
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
                   to={"/albums"}
                   className={
                     "flex items-center gap-[8px]  font-[500] h-[40px] sidebarliHover"
@@ -67,6 +98,17 @@ const MainSideBar = (props) => {
               </li>
               <li>
                 <NavLink
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
                   to={"/artists"}
                   className={
                     "flex items-center gap-[8px]  font-[500] h-[40px] sidebarliHover"
@@ -90,6 +132,17 @@ const MainSideBar = (props) => {
             <ul>
               <li>
                 <NavLink
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
                   to={"recently-added"}
                   className={
                     "flex items-center gap-[8px]  font-[500] h-[40px] sidebarliHover"
@@ -103,7 +156,18 @@ const MainSideBar = (props) => {
               </li>
               <li>
                 <NavLink
-                  to={"#"}
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
+                  to={"most-played"}
                   className={
                     "flex items-center gap-[8px]  font-[500] h-[40px] w-[158px] sidebarliHover"
                   }
@@ -128,6 +192,17 @@ const MainSideBar = (props) => {
             <ul>
               <li>
                 <NavLink
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
                   to={"/your-favourite"}
                   className={
                     "flex items-center gap-[8px]  font-[500] h-[40px] sidebarliHover"
@@ -141,6 +216,17 @@ const MainSideBar = (props) => {
               </li>
               <li>
                 <NavLink
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
                   to={"/your-playlist"}
                   className={
                     "flex items-center gap-[8px]  font-[500] h-[40px] w-[158px] sidebarliHover"
@@ -154,6 +240,17 @@ const MainSideBar = (props) => {
               </li>
               <li>
                 <NavLink
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
                   to={"/add-playlist"}
                   className={
                     "flex items-center gap-[8px]  font-[500] h-[40px] w-[158px]  text-[#0E9EEF]"
@@ -179,6 +276,17 @@ const MainSideBar = (props) => {
             <ul>
               <li>
                 <NavLink
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
                   to={"/setting"}
                   className={
                     "flex items-center gap-[8px]  font-[500] h-[40px] sidebarliHover"
@@ -192,6 +300,17 @@ const MainSideBar = (props) => {
               </li>
               <li>
                 <NavLink
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
                   to={"/logout"}
                   className={
                     "flex items-center gap-[8px]  font-[500] h-[40px] w-[158px] text-[#EE10B0]"

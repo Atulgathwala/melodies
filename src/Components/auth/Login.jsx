@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { HiOutlineMail } from "react-icons/hi";
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -9,6 +9,7 @@ import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { __AUTH } from "../../backend/firebase";
 import toast from "react-hot-toast";
@@ -62,6 +63,7 @@ const Login = () => {
 
     try {
       let loginData = await signInWithEmailAndPassword(__AUTH, email, password);
+      console.log(loginData?.user);
 
       if (loginData?.user?.emailVerified) {
         toast.success("user Logged In Successfully");

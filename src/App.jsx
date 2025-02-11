@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import NavbarConatiner from "./Components/NavbarComponents/NavbarConatiner";
+
 import MainSideBar from "./Components/pages/MainSideBar";
 import { Toaster } from "react-hot-toast";
 
 const App = () => {
-  let [sideBarToggle, setSideBarToggle] = useState(false);
-
   return (
     <section className="bg-[#181818] h-[200vh] flex gap-2">
       <MainSideBar />

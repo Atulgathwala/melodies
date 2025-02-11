@@ -2,12 +2,18 @@ import React from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import { IoCompassOutline } from "react-icons/io5";
-import { MdOutlineAccessTime, MdOutlineAlbum } from "react-icons/md";
+import {
+  MdDeleteForever,
+  MdOutlineAccessTime,
+  MdOutlineAccountBalanceWallet,
+  MdOutlineAlbum,
+} from "react-icons/md";
 import { FaRegHeart, FaUsers } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { TbLogout, TbPlaylistAdd } from "react-icons/tb";
 import { CgTimelapse } from "react-icons/cg";
 import { RiPlayListFill } from "react-icons/ri";
+import { ImFilePicture } from "react-icons/im";
 
 const UserSideBar = (props) => {
   let { toggle, handleSideBarToggle } = props;
@@ -23,7 +29,7 @@ const UserSideBar = (props) => {
             Menu
           </header>
           <main>
-            <ul>
+            <ul className="flex flex-col gap-[5px]">
               <li>
                 <NavLink
                   to={"/"}
@@ -39,13 +45,25 @@ const UserSideBar = (props) => {
               </li>
               <li>
                 <NavLink
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
                   to={"/user-profile"}
+                  end
                   className={
                     "flex items-center gap-[8px]  font-[500] h-[40px] sidebarliHover"
                   }
                 >
                   <span>
-                    <IoCompassOutline />
+                    <MdOutlineAccountBalanceWallet />
                   </span>
                   <span>My Account</span>
                 </NavLink>
@@ -53,18 +71,40 @@ const UserSideBar = (props) => {
               <li>
                 <NavLink
                   to={"update-picture"}
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
                   className={
                     "flex items-center gap-[8px]  font-[500] h-[40px] sidebarliHover"
                   }
                 >
                   <span>
-                    <MdOutlineAlbum />
+                    <ImFilePicture />
                   </span>
                   <span>Update Picture </span>
                 </NavLink>
               </li>
               <li>
                 <NavLink
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
                   to={"add-profile"}
                   className={
                     "flex items-center gap-[8px]  font-[500] h-[40px] sidebarliHover"
@@ -78,13 +118,24 @@ const UserSideBar = (props) => {
               </li>
               <li>
                 <NavLink
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          background: "#EE10B0",
+                          fontSize: "16px",
+                          padding: "2px 6px",
+                          borderRadius: "9px",
+                          fontWeight: "600",
+                        }
+                      : {}
+                  }
                   to={"delete-account"}
                   className={
-                    "flex items-center gap-[8px]  font-[500] h-[40px] sidebarliHover"
+                    "flex items-center gap-[8px]  font-[500] h-[40px] text-red-700  sidebarliHover"
                   }
                 >
                   <span>
-                    <FaUsers />
+                    <MdDeleteForever />
                   </span>
                   <span>Delete Account</span>
                 </NavLink>

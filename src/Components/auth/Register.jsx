@@ -73,6 +73,7 @@ const Register = () => {
         toast.success(`email Verification has been sent to ${email} `);
         updateProfile(userSignUpData?.user, {
           displayName: username,
+          photoURL: "https://i.ibb.co/rGLgkZ5m/profile-user.png",
         });
 
         setUserData(iniTialUserState);

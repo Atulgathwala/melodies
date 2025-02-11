@@ -10,7 +10,6 @@ import { __AUTH } from "../../backend/firebase";
 import toast from "react-hot-toast";
 
 const AuthMenu = () => {
-  let navigate = useNavigate();
   let {
     modalVisible,
     setModalVisible,
@@ -71,12 +70,8 @@ const AuthMenu = () => {
             <li>
               <NavLink to={"/user-profile"}>
                 <img
-                  src={
-                    authUser?.photoURL !== null
-                      ? authUser?.photoURL
-                      : "https://i.ibb.co/KjtLVKD8/user-1.png"
-                  }
-                  className="h-[40px] w-[40px] "
+                  src={authUser?.photoURL}
+                  className="h-[40px] w-[40px] rounded-full"
                   alt=""
                 />
               </NavLink>

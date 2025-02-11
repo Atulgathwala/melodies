@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 const UserMainContainer = () => {
   return (
-    <div className="bg-[#181818] h-[100vh] flex ">
+    <div className="bg-[#181818] flex ">
       <aside className="basis-[17%]">
         <UserSideBar />
       </aside>
