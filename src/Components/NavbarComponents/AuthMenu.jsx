@@ -10,6 +10,7 @@ import { __AUTH } from "../../backend/firebase";
 import toast from "react-hot-toast";
 
 const AuthMenu = () => {
+  let navigate = useNavigate();
   let {
     modalVisible,
     setModalVisible,
@@ -26,6 +27,7 @@ const AuthMenu = () => {
       setAuthUser(null);
       window.localStorage.removeItem("TOKEN");
       setModalVisible(false);
+      navigate("/");
     } catch (err) {
       console.log(err);
       toast.error(err.code || "Failed to logout");

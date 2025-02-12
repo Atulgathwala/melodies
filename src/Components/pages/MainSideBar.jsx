@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import { IoCompassOutline } from "react-icons/io5";
@@ -8,9 +8,11 @@ import { IoMdSettings } from "react-icons/io";
 import { TbLogout, TbPlaylistAdd } from "react-icons/tb";
 import { CgTimelapse } from "react-icons/cg";
 import { RiPlayListFill } from "react-icons/ri";
+import AuthContext, { AUTHContextAPI } from "../Context/AuthContext";
 
 const MainSideBar = (props) => {
   let { toggle, handleSideBarToggle } = props;
+  let { authUser } = useContext(AUTHContextAPI);
   return (
     <section className="basis-[16%] bg-[#181818] pt-[48px] pb-[32px] pl-[64px] pr-[32px] border-r-[2px] border-[#EE10B0]">
       <header>
@@ -23,7 +25,7 @@ const MainSideBar = (props) => {
             Menu
           </header>
           <main>
-            <ul>
+            <ul className="flex flex-col gap-1">
               <li>
                 <NavLink
                   style={({ isActive }) =>
@@ -129,7 +131,7 @@ const MainSideBar = (props) => {
             Library
           </header>
           <main>
-            <ul>
+            <ul className="flex flex-col gap-1">
               <li>
                 <NavLink
                   style={({ isActive }) =>
@@ -189,7 +191,7 @@ const MainSideBar = (props) => {
             Playlist and Favourite
           </header>
           <main>
-            <ul>
+            <ul className="flex flex-col gap-1">
               <li>
                 <NavLink
                   style={({ isActive }) =>
@@ -273,7 +275,7 @@ const MainSideBar = (props) => {
             general
           </header>
           <main>
-            <ul>
+            <ul className="flex flex-col gap-1">
               <li>
                 <NavLink
                   style={({ isActive }) =>
@@ -298,30 +300,32 @@ const MainSideBar = (props) => {
                   <span>Setting</span>
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  style={({ isActive }) =>
-                    isActive
-                      ? {
-                          background: "#EE10B0",
-                          fontSize: "16px",
-                          padding: "2px 6px",
-                          borderRadius: "9px",
-                          fontWeight: "600",
-                        }
-                      : {}
-                  }
-                  to={"/logout"}
-                  className={
-                    "flex items-center gap-[8px]  font-[500] h-[40px] w-[158px] text-[#EE10B0]"
-                  }
-                >
-                  <span>
-                    <TbLogout />
-                  </span>
-                  <span className=" ">Logout</span>
-                </NavLink>
-              </li>
+              {authUser !== null && (
+                <li>
+                  <NavLink
+                    style={({ isActive }) =>
+                      isActive
+                        ? {
+                            background: "#EE10B0",
+                            fontSize: "16px",
+                            padding: "2px 6px",
+                            borderRadius: "9px",
+                            fontWeight: "600",
+                          }
+                        : {}
+                    }
+                    to={"/logout"}
+                    className={
+                      "flex items-center gap-[8px]  font-[500] h-[40px] w-[158px] text-[#EE10B0]"
+                    }
+                  >
+                    <span>
+                      <TbLogout />
+                    </span>
+                    <span className=" ">Logout</span>
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </main>
         </div>

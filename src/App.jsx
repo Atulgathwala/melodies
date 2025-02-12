@@ -11,7 +11,7 @@ const App = () => {
       <section className="basis-[82%] pt-[36px] pl-[20px]">
         <Outlet />
       </section>
-      <Toaster />
+      <Toaster position="top-center" reverseOrder={false} />
     </section>
   );
 };

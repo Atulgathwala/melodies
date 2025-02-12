@@ -4,11 +4,14 @@ import App from "./App.jsx";
 import { RouterProvider } from "react-router-dom";
 import { Routers } from "./Components/Routes/Router.jsx";
 import AuthContext from "./Components/Context/AuthContext.jsx";
+import UserContext from "./Components/Context/UserContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <AuthContext>
-    <RouterProvider router={Routers}>
-      <App />
-    </RouterProvider>
+    <UserContext>
+      <RouterProvider router={Routers}>
+        <App />
+      </RouterProvider>
+    </UserContext>
   </AuthContext>
 );

@@ -37,6 +37,7 @@ const UpdatePicture = () => {
       formData.append("file", pictureFile);
       formData.append("upload_preset", "melodies_music");
       formData.append("cloud_name", "dasa3kzyf");
+      console.log("after formdata");
 
       let CloudinaryResponse = await window.fetch(
         "https://api.cloudinary.com/v1_1/dasa3kzyf/image/upload",
@@ -47,15 +48,14 @@ const UpdatePicture = () => {
       );
 
       let responseObj = await CloudinaryResponse.json();
-      console.log(responseObj);
 
       updateProfile(authUser, {
         photoURL: responseObj?.url,
       });
 
-      window.location.assign("/user-profile");
-
       toast.success("Profile Picture Updated Successfully");
+
+      window.location.assign("/user-profile");
     } catch (err) {
       console.log(err);
       toast.error(err.code.slice(5));

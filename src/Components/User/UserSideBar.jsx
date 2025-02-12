@@ -18,7 +18,7 @@ import { ImFilePicture } from "react-icons/im";
 const UserSideBar = (props) => {
   let { toggle, handleSideBarToggle } = props;
   return (
-    <section className="basis-[16%] h-[100vh] bg-[#181818] pt-[48px] pb-[32px] pl-[64px] pr-[32px] border-r-[2px] border-[#EE10B0]">
+    <section className="basis-[16%] h-[100vh] bg-[#181818] pt-[48px] pb-[32px] pl-[64px] pr-[32px] border-r-[2px] border-[#EE10B0] sticky top-0">
       <header>
         <img src="src/assets/images/sideBarImages/Frame 174.png" alt="" />
       </header>
