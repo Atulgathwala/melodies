@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 const UpdatePicture = () => {
   let { authUser } = useContext(AUTHContextAPI);
-  // let navigate = useNavigate();
 
   let [isLoading, setIsloading] = useState(false);
 
@@ -33,11 +32,9 @@ const UpdatePicture = () => {
     setIsloading(true);
     try {
       let formData = new FormData();
-
       formData.append("file", pictureFile);
       formData.append("upload_preset", "melodies_music");
       formData.append("cloud_name", "dasa3kzyf");
-      console.log("after formdata");
 
       let CloudinaryResponse = await window.fetch(
         "https://api.cloudinary.com/v1_1/dasa3kzyf/image/upload",
@@ -54,7 +51,6 @@ const UpdatePicture = () => {
       });
 
       toast.success("Profile Picture Updated Successfully");
-
       window.location.assign("/user-profile");
     } catch (err) {
       console.log(err);
@@ -69,35 +65,42 @@ const UpdatePicture = () => {
   }, [authUser?.photoURL]);
 
   return (
-    <section className="h-[98%] w-[100%] relative">
-      <article className="bg-[#53063e]  absolute top-[10%] left-[30%] p-6 rounded-md  flex flex-col gap-5 items-center shadow-sm shadow-gray-400">
-        <header className="">
-          <h1 className="text-[#FCE9EC] text-[20px] font-[600] text-center">
+    <section className="h-[98%] w-[100%] relative flex items-center justify-center bg-black">
+      <article className="bg-gray-800 w-[90%] md:w-[500px] p-6 rounded-2xl shadow-2xl shadow-black/50 flex flex-col gap-5 items-center text-white">
+        <header className="text-center">
+          <h1 className="text-[24px] font-semibold text-[#F4A261]">
             Update Profile Picture
           </h1>
         </header>
+
         <main>
           <img
             src={PreviewPicture}
-            alt=""
-            className="h-[250px] w-[250px] rounded-full"
+            alt="Profile"
+            className="h-[200px] w-[200px] rounded-full object-cover shadow-md"
           />
         </main>
-        <footer>
+
+        <footer className="w-full">
           <form
             onSubmit={handleSubmit}
-            action=""
-            className="flex flex-col  w-[100%] gap-4  justify-center"
+            className="flex flex-col gap-4 items-center"
           >
-            <div className="flex justify-center ">
+            <div className="w-full">
               <input
                 onChange={handlInputChange}
                 type="file"
-                className=" py-2 px-4 file:bg-red-500 file:py-2 file:px-4 file:rounded-[5px] file:mx-2 rounded-[5px] w-[90%] cursor-pointer file:cursor-pointer "
+                className="block w-full text-sm text-gray-400
+                  file:mr-4 file:py-2 file:px-4
+                  file:rounded-full file:border-0
+                  file:text-sm file:font-semibold
+                  file:bg-[#403e6a] file:text-white
+                  hover:file:bg-[#5A52D3]
+                  cursor-pointer"
               />
             </div>
-            <div>
-              <button className="bg-gradient-to-r from-pink-500 to-blue-500 py-2 px-4 w-[100%] rounded-[9px] cursor-pointer">
+            <div className="w-full">
+              <button className="w-full py-3 px-6 rounded-xl bg-[#403e6a] text-white font-semibold shadow-lg  hover:bg-[#5A52D3] transition duration-300">
                 Upload Picture
               </button>
             </div>

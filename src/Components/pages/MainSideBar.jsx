@@ -300,7 +300,7 @@ const MainSideBar = (props) => {
                   <span>Setting</span>
                 </NavLink>
               </li>
-              {authUser !== null && (
+              {authUser == null && (
                 <li>
                   <NavLink
                     style={({ isActive }) =>

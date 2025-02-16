@@ -7,6 +7,10 @@ import MyAccount from "../User/MyAccount";
 import UpdatePicture from "../User/UpdatePicture";
 import AddProfile from "../User/AddProfile";
 import DeleteAccount from "../User/DeleteAccount";
+import PrivateRoutes from "./PrivateRoutes";
+import AdminContainer from "../admin/AdminContainer";
+import CreateAlbum from "../admin/CreateAlbum";
+import AlbumDetails from "../Albums/AlbumDetails";
 
 export const Routers = createBrowserRouter([
   {
@@ -38,6 +42,10 @@ export const Routers = createBrowserRouter([
         element: <h1>Most played</h1>,
       },
       {
+        path: "album-details/:id",
+        element: <AlbumDetails />,
+      },
+      {
         path: "your-favourite",
         element: <h1>Your Favourite</h1>,
       },
@@ -67,19 +75,51 @@ export const Routers = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <MyAccount />,
+        element: (
+          <PrivateRoutes>
+            <MyAccount />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "update-picture",
-        element: <UpdatePicture />,
+        element: (
+          <PrivateRoutes>
+            <UpdatePicture />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "add-profile",
-        element: <AddProfile />,
+        element: (
+          <PrivateRoutes>
+            {" "}
+            <AddProfile />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "delete-account",
-        element: <DeleteAccount />,
+        element: (
+          <PrivateRoutes>
+            <DeleteAccount />
+          </PrivateRoutes>
+        ),
+      },
+    ],
+  },
+
+  {
+    path: "/admin-dashboard",
+    element: <AdminContainer />,
+    children: [
+      {
+        index: true,
+        element: <h1>Admin Dashboard</h1>,
+      },
+      {
+        path: "create-album",
+        element: <CreateAlbum />,
       },
     ],
   },

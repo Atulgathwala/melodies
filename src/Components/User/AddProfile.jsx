@@ -175,7 +175,7 @@ const AddProfile = () => {
 
   return (
     <section className=" w-[100%] min-h-[100vh] flex justify-center p-6">
-      <article className="bg-[#53063E] w-[800px] p-4 rounded-sm">
+      <article className="bg-[#1f1f2e] w-[800px] p-4 rounded-sm">
         <header>
           <h1 className="text-[32px] text-center ">Add Profile</h1>
         </header>

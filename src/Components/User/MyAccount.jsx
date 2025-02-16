@@ -9,129 +9,120 @@ const MyAccount = () => {
   let { userDBData } = useContext(UserContextApi);
 
   return (
-    <section className="h-[100vh] w-[100%] flex items-center justify-center relative">
-      <article className="bg-slate-300  w-[750px] absolute top-[10%] rounded-md shadow-lg shadow-purple-500/30 flex flex-col">
-        <header className=" border border-black bg-gradient-to-r from-pink-500 to-blue-500 basis-[33%]  text-white text-lg font-semibold rounded-t-md flex items-center justify-between py-2 px-6 ">
-          <div className="flex items-center gap-6 ">
+    <section className="h-[100vh] w-full flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800">
+      <article className="w-[750px] bg-[#1f1f2e] rounded-xl shadow-sm shadow-purple-600/30 flex flex-col overflow-hidden animate-fadeIn">
+        <header className="bg-gradient-to-r from-[#3a3a5a] to-[#2a2a3e] text-white text-lg font-semibold flex items-center justify-between py-4 px-6">
+          <div className="flex items-center gap-6">
             <aside>
               <img
                 src={authUser?.photoURL}
-                alt=""
-                className="h-[125px] w-[125px] rounded-full"
+                alt="User"
+                className="h-[100px] w-[100px] rounded-full shadow-lg border-4 border-gray-800"
               />
             </aside>
             <aside>
-              <h1> {authUser?.displayName}</h1>
-              <p>{authUser?.email}</p>
+              <h1 className="text-[20px] font-bold">{authUser?.displayName}</h1>
+              <p className="text-gray-400 text-[16px]">{authUser?.email}</p>
             </aside>
           </div>
-          {/* coint div */}
-          <div className="flex flex-col items-center justify-center ">
-            <span>
-              <img src={coinImage} alt="" className="h-[50px]" />
-            </span>
-            <span>
-              {" "}
-              <span className="font-[700]">M</span> Coins :{" "}
+          <div className="flex flex-col items-center">
+            <img
+              src={coinImage}
+              alt="Coins"
+              className="h-[50px] animate-bounce"
+            />
+            <span className="text-yellow-400 font-bold text-lg">
+              <span className="font-extrabold">M</span> Coins:{" "}
               {userDBData?.Balance || 0}
             </span>
           </div>
         </header>
-        {!userDBData ? (
-          <section className="p-10">
-            <article className="flex flex-col items-center gap-[10px]">
-              <header>
-                <h1 className="text-[32px]">Please Complete Profile !!</h1>
-              </header>
 
-              <main>
-                <img
-                  src="https://i.ibb.co/sWh24k4/images-removebg-preview.png"
-                  alt=""
-                />
-              </main>
-              <footer>
-                <NavLink
-                  to="/user/profile/add-profile"
-                  className="text-white bg-blue-600 px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
-                >
-                  Go to Add Profile
-                </NavLink>
-              </footer>
-            </article>
+        {!userDBData ? (
+          <section className="p-10 text-center text-white">
+            <h1 className="text-3xl font-bold mb-4">
+              Please Complete Profile !!
+            </h1>
+            <img
+              src="https://i.ibb.co/sWh24k4/images-removebg-preview.png"
+              alt="Complete Profile"
+              className="mx-auto mb-4 w-[250px]"
+            />
+            <NavLink
+              to="/user-profile/add-profile"
+              className="bg-amber-600 px-6 py-3 rounded-lg hover:bg-amber-700 transition duration-300 inline-block"
+            >
+              Go to Add Profile
+            </NavLink>
           </section>
         ) : (
-          <main className="p-4 ">
-            <div className="text-[20px] font-semibold text-center mb-8  flex justify-between">
-              <span className="text-[26px] text-black"> Personal Details</span>
-              <span>
-                <NavLink
-                  to="/user-profile/add-profile"
-                  className="bg-red-500 py-[7px] px-[10px] rounded-[10px]"
-                  state={userDBData}
-                >
-                  Edit Profile
-                </NavLink>
-              </span>
+          <main className="p-6 text-white">
+            <div className="text-2xl font-semibold flex justify-between items-center mb-6">
+              <span className="text-2xl text-white">Personal Details</span>
+              <NavLink
+                to="/user-profile/add-profile"
+                className="bg-red-500 py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300 text-[18px] "
+                state={userDBData}
+              >
+                Edit Profile
+              </NavLink>
             </div>
 
             <ul className="grid grid-cols-2 gap-6">
-              <li className="flex justify-between flex-col p-4 bg-[#464f5e] rounded-lg shadow-md">
-                <span className="text-[25px] font-semibold text-[#78a4e6]">
+              <li className="p-4 bg-[#2e2e44] rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition duration-300">
+                <span className="text-[18px] font-semibold text-[#b08fff]">
                   Full Name
                 </span>
-                <p className="text-white">{userDBData?.name}</p>
+                <p className="text-gray-300 text-[16px]">{userDBData?.name}</p>
               </li>
 
-              {/* Gender Box */}
-              <li className="flex justify-between flex-col p-4 bg-[#464f5e] rounded-lg shadow-md">
-                <span className="text-[25px] font-semibold text-[#78a4e6]">
+              <li className="p-4 bg-[#2e2e44] rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition duration-300">
+                <span className="text-[18px] font-semibold text-[#b08fff]">
                   Gender
                 </span>
-                <p className="text-white">{userDBData?.gender}</p>
+                <p className="text-gray-300 text-[16px]">
+                  {userDBData?.gender}
+                </p>
               </li>
 
-              {/* Date of Birth Box */}
-              <li className="flex justify-between flex-col p-4 bg-[#464f5e] rounded-lg shadow-md">
-                <span className="text-[25px] font-semibold text-[#78a4e6]">
+              <li className="p-4 bg-[#2e2e44] rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition duration-300">
+                <span className="text-[18px] font-semibold text-[#b08fff]">
                   Date of Birth
                 </span>
-                <p className="text-white">{userDBData?.dob}</p>
+                <p className="text-gray-300 text-[16px]">{userDBData?.dob}</p>
               </li>
 
-              {/* Age Box */}
-              <li className="flex justify-between flex-col p-4 bg-[#464f5e] rounded-lg shadow-md">
-                <span className="text-[25px] font-semibold text-[#78a4e6]">
+              <li className="p-4 bg-[#2e2e44] rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition duration-300">
+                <span className="text-[18px] font-semibold text-[#b08fff]">
                   Age
                 </span>
-                <p className="text-white">{userDBData?.dob}</p>
+                <p className="text-gray-300 text-[16px]">{userDBData?.dob}</p>
               </li>
 
-              {/* Address Box */}
-              <li className="flex justify-between flex-col p-4 bg-[#464f5e] rounded-lg shadow-md">
-                <span className="text-[25px] font-semibold text-[#78a4e6]">
+              <li className="p-4 bg-[#2e2e44] rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition duration-300">
+                <span className="text-[18px] font-semibold text-[#b08fff]">
                   Address
                 </span>
-                <p className="text-white">{userDBData?.address}</p>
+                <p className="text-gray-300 text-[16px]">
+                  {userDBData?.address}
+                </p>
               </li>
 
-              {/* Contact Box */}
-              <li className="flex justify-between flex-col p-4 bg-[#464f5e] rounded-lg shadow-md">
-                <span className="text-[25px] font-semibold text-[#78a4e6]">
+              <li className="p-4 bg-[#2e2e44] rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition duration-300">
+                <span className="text-[18px] font-semibold text-[#b08fff]">
                   Contact
                 </span>
-                <p className="text-white">{userDBData?.contact}</p>
+                <p className="text-gray-300 text-[16px]">
+                  {userDBData?.contact}
+                </p>
               </li>
 
-              {/* Languages Box - this takes the full width */}
-              <li className="flex justify-between flex-col p-4 bg-[#464f5e] rounded-lg shadow-md col-span-2">
-                <span className="text-[25px] font-semibold text-[#78a4e6]">
+              <li className="p-4 bg-[#2e2e44] rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition duration-300 col-span-2">
+                <span className="text-[18px] font-semibold text-[#b08fff]">
                   Languages
                 </span>
-                <p className="text-white">
-                  {userDBData?.languages?.map((el) => {
-                    return `#${el}  ,  `;
-                  })}
+                <p className="text-gray-300 text-[16px]">
+                  {userDBData?.languages?.map((el) => `#${el}`).join(", ")}
                 </p>
               </li>
             </ul>

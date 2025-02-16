@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import NavbarConatiner from "../NavbarComponents/NavbarConatiner";
 import { NavLink } from "react-router-dom";
-import Register from "../auth/Register";
-import Login from "../auth/Login";
-import Modal from "../Modal/Modal";
+
+import TopAlbums from "../Albums/TopAlbums";
 
 const Home = () => {
   return (
@@ -32,9 +31,9 @@ const Home = () => {
           </div>
         </section>
       </article>
-      {/* after Image */}
+      {/* Top Albums Section */}
 
-      {/* <Register /> */}
+      <TopAlbums />
     </section>
   );
 };
