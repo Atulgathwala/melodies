@@ -65,8 +65,8 @@ const UpdatePicture = () => {
   }, [authUser?.photoURL]);
 
   return (
-    <section className="h-[98%] w-[100%] relative flex items-center justify-center bg-black">
-      <article className="bg-gray-800 w-[90%] md:w-[500px] p-6 rounded-2xl shadow-2xl shadow-black/50 flex flex-col gap-5 items-center text-white">
+    <section className="h-[98%] w-[100%] relative flex items-center justify-center bg-[#181818]">
+      <article className="bg-[#232323] w-[90%] md:w-[500px] p-6 rounded-2xl shadow-2xl shadow-black/50 flex flex-col gap-5 items-center text-white">
         <header className="text-center">
           <h1 className="text-[24px] font-semibold text-[#F4A261]">
             Update Profile Picture

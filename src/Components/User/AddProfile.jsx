@@ -28,7 +28,7 @@ const AddProfile = () => {
 
   let { userDBData } = useContext(UserContextApi);
 
-  console.log("hiii",  location?.state?.gender);
+  console.log("hiii", location?.state?.gender);
 
   let initialUserState = {
     name: location?.state?.name || "",
@@ -175,7 +175,7 @@ const AddProfile = () => {
 
   return (
     <section className=" w-[100%] min-h-[100vh] flex justify-center p-6">
-      <article className="bg-[#1f1f2e] w-[800px] p-4 rounded-sm">
+      <article className="bg-[#232323] w-[800px] p-4 rounded-sm">
         <header>
           <h1 className="text-[32px] text-center ">Add Profile</h1>
         </header>
@@ -434,7 +434,7 @@ const AddProfile = () => {
               </div>
 
               <footer className="py-6">
-                <button className="py-2 bg-red-700 px-4 w-full rounded-md cursor-pointer">
+                <button className="py-2 bg-[#1DB954] hover:bg-[#1ED760] px-4 w-full rounded-md cursor-pointer">
                   Submit
                 </button>
               </footer>

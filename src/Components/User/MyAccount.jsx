@@ -9,8 +9,8 @@ const MyAccount = () => {
   let { userDBData } = useContext(UserContextApi);
 
   return (
-    <section className="h-[100vh] w-full flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800">
-      <article className="w-[750px] bg-[#1f1f2e] rounded-xl shadow-sm shadow-purple-600/30 flex flex-col overflow-hidden animate-fadeIn">
+    <section className="h-[100vh] w-full flex items-center justify-center ">
+      <article className="w-[750px] bg-[#232323] rounded-xl shadow-sm shadow-purple-600/30 flex flex-col overflow-hidden animate-fadeIn">
         <header className="bg-gradient-to-r from-[#3a3a5a] to-[#2a2a3e] text-white text-lg font-semibold flex items-center justify-between py-4 px-6">
           <div className="flex items-center gap-6">
             <aside>

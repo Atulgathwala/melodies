@@ -1,52 +1,55 @@
-import React, { useRef, useState, useEffect } from "react";
-import { FaPlay, FaPause, FaStepBackward, FaStepForward } from "react-icons/fa";
-import { GrCaretNext } from "react-icons/gr";
-import { ImNext2 } from "react-icons/im";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { FaPause, FaPlay, FaStepBackward, FaStepForward } from "react-icons/fa";
+import { SongContextApi } from "../Context/SongPlayerContext";
 
-const AudioPlayer = ({ src, title, thumbnail }) => {
+const MYAudioPlayer = ({ src, title, thumbnail }) => {
+  let { isPlayingContext, setIsPlayingContext } = useContext(SongContextApi);
+
   const audioRef = useRef(new Audio(src));
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [duration, setDuration] = useState(0);
+  let [isPlaying, setIsPlaying] = useState();
+  let [progressBar, setProgressBar] = useState(0);
+  let [duration, setDuration] = useState(0);
 
   useEffect(() => {
-    const audio = audioRef.current;
+    let audio = audioRef.current;
 
-    // Set duration once metadata is loaded
     audio.addEventListener("loadedmetadata", () => {
       setDuration(audio.duration);
     });
 
-    // Update progress as song plays
     audio.addEventListener("timeupdate", () => {
-      setProgress(audio.currentTime);
+      setProgressBar(audio.currentTime);
     });
 
-    // Pause on unmount
+    if (isPlayingContext) {
+      audio.play();
+      setIsPlaying(true)
+    }
+
     return () => {
       audio.pause();
     };
   }, []);
 
-  // Play/Pause toggle
-  const togglePlay = () => {
-    const audio = audioRef.current;
+  let togglePlay = () => {
+    let audio = audioRef.current;
     if (isPlaying) {
       audio.pause();
     } else {
       audio.play();
     }
+
     setIsPlaying(!isPlaying);
   };
 
-  // Handle progress bar change
-  const handleProgressChange = (e) => {
-    const audio = audioRef.current;
+  let handleProgessChange = (e) => {
+    let audio = audioRef.current;
+
     audio.currentTime = e.target.value;
-    setProgress(e.target.value);
+
+    setProgressBar(e.target.value);
   };
 
-  // Format time in mm:ss
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60)
@@ -89,20 +92,20 @@ const AudioPlayer = ({ src, title, thumbnail }) => {
 
         {/* audio */}
         <section className=" flex items-center gap-2 py-4 w-full">
-          <span>{formatTime(progress)}</span>
+          <span>{formatTime(progressBar)}</span>
           <input
             type="range"
             min="0"
             max={duration}
-            value={progress}
-            onChange={handleProgressChange}
+            value={progressBar}
+            onChange={handleProgessChange}
             className="w-full "
           />
-          <span>{formatTime(duration - progress)}</span>
+          <span>{formatTime(duration - progressBar)}</span>
         </section>
       </section>
     </section>
   );
 };
 
-export default AudioPlayer;
+export default MYAudioPlayer;

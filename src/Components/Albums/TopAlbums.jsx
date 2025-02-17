@@ -8,7 +8,7 @@ const TopAlbums = () => {
   console.log(allAlbums);
 
   return (
-    <section className=" py-12 px-[10px]">
+    <section className=" py-12 px-[10px] ">
       <article>
         <header className="">
           <h1 className="text-[32px] font-[700] p-[10px]">

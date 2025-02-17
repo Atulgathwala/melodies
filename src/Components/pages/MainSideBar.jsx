@@ -14,7 +14,7 @@ const MainSideBar = (props) => {
   let { toggle, handleSideBarToggle } = props;
   let { authUser } = useContext(AUTHContextAPI);
   return (
-    <section className="basis-[16%] bg-[#181818] pt-[48px] pb-[32px] pl-[64px] pr-[32px] border-r-[2px] border-[#EE10B0]">
+    <section className="basis-[16%] bg-[#181818] pt-[48px] pb-[32px] pl-[64px] h-[100vh] pr-[32px] border-r-[2px] border-[#EE10B0] sticky top-0">
       <header>
         <img src="src/assets/images/sideBarImages/Frame 174.png" alt="" />
       </header>
