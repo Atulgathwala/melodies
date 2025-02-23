@@ -648,7 +648,7 @@ const CreateAlbum = () => {
             </main>
             {/* form footer */}
             <footer>
-              <button className="py-2 px-6 bg-[#326efb] rounded-[10px] w-full cursor-pointer">
+              <button className="py-2 px-6 bg-[#EE10B0] rounded-[10px] w-full cursor-pointer">
                 submit
               </button>
             </footer>

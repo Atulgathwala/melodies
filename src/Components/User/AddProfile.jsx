@@ -434,7 +434,7 @@ const AddProfile = () => {
               </div>
 
               <footer className="py-6">
-                <button className="py-2 bg-[#1DB954] hover:bg-[#1ED760] px-4 w-full rounded-md cursor-pointer">
+                <button className="py-2 bg-[#EE10B0] hover:bg-[#ee10afc1] px-4 w-full rounded-md cursor-pointer">
                   Submit
                 </button>
               </footer>

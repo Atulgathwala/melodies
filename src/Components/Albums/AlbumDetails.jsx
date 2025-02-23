@@ -1,4 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+
+
+
+
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import MYAudioPlayer from "../utility/MYAudioPlayer";
@@ -8,40 +12,19 @@ const AlbumDetails = () => {
   let albumData = useLocation();
   let album = albumData.state.album;
 
-  let initialSongState = {
-    src: "",
-    thumnail: "",
-    songname: "",
-  };
-
-  let [selectedSong, setSelectedSong] = useState(initialSongState);
-  let [currentSongIndex, setCurrentSongIndex] = useState(null);
-  let { isPlayingContext, setIsPlayingContext } = useContext(SongContextApi);
-
-  let handlePlaySong = (Songsrc, Songthumbnail, SONGsongname, ind) => {
-    setSelectedSong({
-      src: Songsrc,
-      thumnail: Songthumbnail,
-      songname: SONGsongname,
-    });
-    setCurrentSongIndex(ind);
-    setIsPlayingContext(true);
-  };
+  let { isPlaying, setIsPlaying, songs, setSongs, songIndex, setSongIndex } =
+    useContext(SongContextApi);
 
   let handlePauseSong = () => {
-    setIsPlayingContext(false);
-    setSelectedSong(initialSongState);
-    setCurrentSongIndex(null);
-  };
+    setIsPlaying(false);
 
-  useEffect(() => {
-    console.log(selectedSong);
-  }, [currentSongIndex]);
+    setSongIndex(null);
+  };
 
   return (
     <section className="bg-[#181818] rounded-[10px]">
       <article className="relative">
-        <header className="h-[350px] w-[96%] p-4 flex rounded-[10px] shadow-lg shadow-[#0f0e0e] relative">
+        <header className="h-[350px] w-[96%] bg-[#232323] p-4 flex rounded-[10px] shadow-lg shadow-[#0f0e0e] relative">
           <aside className="basis-[30%] flex justify-center items-center relative">
             <img
               src={album?.albumPoster}
@@ -116,29 +99,34 @@ const AlbumDetails = () => {
                 {album?.songs?.map((song, ind) => {
                   return (
                     <tr
+                      onClick={() => {
+                        setSongs(album?.songs);
+                        setSongIndex(ind);
+                        setIsPlaying(true);
+                      }}
                       key={ind}
-                      className="w-full h-[50px] bg-[#232323] shadow-lg shadow-[#0f0e0e] hover:scale-[1.01] transition-all ease-in-out duration-500 cursor-pointer"
+                      className={`w-full h-[50px] bg-[#232323] shadow-lg shadow-[#0f0e0e] 
+          hover:scale-[1.01] transition-all ease-in-out duration-500 cursor-pointer
+          ${isPlaying && songIndex === ind ? "playingGradient" : ""}`}
                     >
                       <td className="text-center rounded-tl-[10px] rounded-bl-[10px]">
                         {ind + 1}
                       </td>
                       <td className="flex items-center gap-x-6 pl-10">
                         <span className="relative">
-                          {isPlayingContext && currentSongIndex === ind ? (
+                          {isPlaying && songIndex === ind ? (
                             <FaPause
-                              className="absolute left-[40px] top-[-10px] text-[20px] shadow-md shadow-black"
-                              onClick={handlePauseSong}
+                              className="absolute left-[40px] top-[-10px] text-[20px] shadow-md shadow-black cursor-pointer"
+                              onClick={(e) => {
+                                e.stopPropagation(); // Prevent row click event
+                                handlePauseSong();
+                              }}
                             />
                           ) : (
                             <FaPlay
                               className="absolute left-[40px] top-[-10px] text-[20px] shadow-md shadow-black"
                               onClick={() => {
-                                handlePlaySong(
-                                  song?.songUrl,
-                                  song?.thumbnail,
-                                  song?.songName,
-                                  ind
-                                );
+                                setIsPlaying(true);
                               }}
                             />
                           )}
@@ -163,13 +151,12 @@ const AlbumDetails = () => {
           </main>
         </main>
       </article>
-      {isPlayingContext && (
+      {songIndex !== null && (
         <MYAudioPlayer
-          key={selectedSong.src} // Add this line
-          src={selectedSong.src}
-          title={selectedSong.songname}
-          thumbnail={selectedSong.thumnail}
-          Playing={isPlayingContext}
+          key={songs[songIndex]}
+          src={songs[songIndex]?.songUrl}
+          songsAlbum={songs}
+          index={songIndex}
         />
       )}
     </section>

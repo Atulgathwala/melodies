@@ -22,5 +22,39 @@ body{
 }
 
 
+/* 360 degrre roation */
 
+
+
+.rotation360{
+    animation: rotaing360 2s linear infinite;
+}
+
+@keyframes rotaing360 {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+    
+}
+
+
+
+@keyframes flowingGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.playingGradient {
+    background: linear-gradient(90deg,#3381ff9f, #ff5833bb, #54b2c5b3, #7bea05aa);
+    background-size: 300% 300%;
+    animation: flowingGradient 3s linear infinite;
+}
 

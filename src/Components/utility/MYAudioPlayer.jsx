@@ -1,35 +1,43 @@
+
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { FaPause, FaPlay, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { SongContextApi } from "../Context/SongPlayerContext";
+import toast from "react-hot-toast";
+import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
 
-const MYAudioPlayer = ({ src, title, thumbnail }) => {
-  let { isPlayingContext, setIsPlayingContext } = useContext(SongContextApi);
+const MYAudioPlayer = () => {
+  let { isPlaying, setIsPlaying, songs, setSongs, songIndex, setSongIndex } =
+    useContext(SongContextApi);
 
-  const audioRef = useRef(new Audio(src));
-  let [isPlaying, setIsPlaying] = useState();
+  let [songToPlay, setSongToPlay] = useState(songs[songIndex]);
+  const audioRef = useRef(new Audio(songToPlay?.songUrl));
+
   let [progressBar, setProgressBar] = useState(0);
   let [duration, setDuration] = useState(0);
+  let [volume, setVolume] = useState(1);
+  let [muted, setmuted] = useState(false);
 
   useEffect(() => {
     let audio = audioRef.current;
+    audio.src = songToPlay?.songUrl;
 
-    audio.addEventListener("loadedmetadata", () => {
-      setDuration(audio.duration);
-    });
+    const updateDuration = () => setDuration(audio.duration);
+    const updateProgress = () => setProgressBar(audio.currentTime);
 
-    audio.addEventListener("timeupdate", () => {
-      setProgressBar(audio.currentTime);
-    });
+    audio.addEventListener("loadedmetadata", updateDuration);
+    audio.addEventListener("timeupdate", updateProgress);
 
-    if (isPlayingContext) {
+    if (isPlaying) {
       audio.play();
-      setIsPlaying(true)
+      setIsPlaying(true);
     }
 
     return () => {
       audio.pause();
+      audio.removeEventListener("loadedmetadata", updateDuration);
+      audio.removeEventListener("timeupdate", updateProgress);
     };
-  }, []);
+  }, [songIndex, isPlaying, songToPlay]);
 
   let togglePlay = () => {
     let audio = audioRef.current;
@@ -58,38 +66,68 @@ const MYAudioPlayer = ({ src, title, thumbnail }) => {
     return `${minutes}:${seconds}`;
   };
 
+  // handle next song play
+
+  let handleNextSongPlay = () => {
+    console.log("song index", songIndex);
+
+    if (songIndex < songs?.length - 1) {
+      console.log("song index inside", songIndex);
+      setSongIndex((prevSate) => prevSate + 1);
+      setSongToPlay(songs[songIndex]);
+    } else {
+      setSongIndex(0);
+    }
+  };
+
+  // handle Previous
+  let handlePreviousSongPlay = () => {
+    setSongIndex((prevIndex) => {
+      if (prevIndex > 0) {
+        return prevIndex - 1;
+      }
+      toast.error("no previous song available");
+      return prevIndex; // Prevent going below 0
+    });
+  };
+
+  // song Changing UseEffect
+  useEffect(() => {
+    setSongToPlay(songs[songIndex]);
+  }, [songIndex, songToPlay?.songUrl]);
+
+  let handleVolumeChange = (e) => {
+    let newVloume = e.target.value;
+    setVolume(newVloume);
+
+    audioRef.current.volume = volume;
+  };
+
+  let handleMute = () => {
+    audioRef.current.muted = !audioRef.current.muted;
+    setmuted(!muted);
+  };
+
   return (
     <section className="bg-[#232323] text-white rounded-lg p-4 shadow-md shadow-[#0f0e0e] w-[78%] h-[140px] flex items-center fixed bottom-4 right-12 ">
       <div className="basis-[10%]    flex flex-col items-center justify-center gap-2">
         <picture>
           <img
-            src={thumbnail}
-            alt={title}
-            className=" w-[75px] h-[75px] object-cover rounded-full  "
+            src={songToPlay?.thumbnail}
+            alt={songToPlay?.title}
+            className={
+              isPlaying
+                ? " w-[75px] h-[75px] object-cover rounded-full rotation360"
+                : " w-[75px] h-[75px] object-cover rounded-full"
+            }
           />
         </picture>
 
-        <h3 className="text-lg font-semibold">{title}</h3>
+        <h3 className="text-lg font-semibold">{songToPlay?.songName}</h3>
       </div>
       {/* Picture and titlw ends  */}
 
       <section className=" flex flex-col justify-center items-center basis-[80%]">
-        <div className="">
-          <button onClick={togglePlay} className=" text-white p-2 rounded-full">
-            <FaStepBackward className="text-[24px]" />
-          </button>
-          <button onClick={togglePlay} className=" text-white p-2 rounded-full">
-            {isPlaying ? (
-              <FaPause className="text-[24px] " />
-            ) : (
-              <FaPlay className="text-[24px]" />
-            )}
-          </button>
-          <button className=" text-white p-2 ">
-            <FaStepForward className="text-[24px]" />
-          </button>
-        </div>
-
         {/* audio */}
         <section className=" flex items-center gap-2 py-4 w-full">
           <span>{formatTime(progressBar)}</span>
@@ -103,6 +141,50 @@ const MYAudioPlayer = ({ src, title, thumbnail }) => {
           />
           <span>{formatTime(duration - progressBar)}</span>
         </section>
+
+        {/* below button section */}
+        <section className="flex justify-between w-full  items-center px-20 ">
+          <span onClick={handleMute} className="text-xl cursor-pointer">
+            {muted ? <HiSpeakerXMark /> : <HiSpeakerWave />}
+          </span>
+          <div className="">
+            <button
+              onClick={handlePreviousSongPlay}
+              className=" text-white p-2 rounded-full"
+            >
+              <FaStepBackward className="text-[24px] cursor-pointer" />
+            </button>
+            <button
+              onClick={togglePlay}
+              className=" text-white p-2 rounded-full"
+            >
+              {isPlaying ? (
+                <FaPause className="text-[24px] cursor-pointer" />
+              ) : (
+                <FaPlay className="text-[24px] cursor-pointer" />
+              )}
+            </button>
+            <button className=" text-white p-2 cursor-pointer">
+              <FaStepForward
+                className="text-[24px]"
+                onClick={handleNextSongPlay}
+              />
+            </button>
+          </div>
+          <section className="flex items-center gap-2 py-2  w-[150px] ">
+            <span>🔉</span>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value={volume}
+              onChange={handleVolumeChange}
+              className="w-[100px] cursor-pointer"
+            />
+          </section>
+        </section>
+        {/*  buttons sections ended here */}
       </section>
     </section>
   );

@@ -3,9 +3,21 @@ import React, { createContext, useState } from "react";
 export let SongContextApi = createContext(null);
 
 const SongPlayerContext = ({ children }) => {
-  let [isPlayingContext, setIsPlayingContext] = useState(false);
+  let [isPlaying, setIsPlaying] = useState(false);
+  let [songs, setSongs] = useState(null);
+  let [songIndex, setSongIndex] = useState(null);
+
   return (
-    <SongContextApi.Provider value={{ isPlayingContext, setIsPlayingContext }}>
+    <SongContextApi.Provider
+      value={{
+        isPlaying,
+        setIsPlaying,
+        songs,
+        setSongs,
+        songIndex,
+        setSongIndex,
+      }}
+    >
       {children}
     </SongContextApi.Provider>
   );

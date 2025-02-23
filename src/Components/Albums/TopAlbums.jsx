@@ -26,7 +26,7 @@ const TopAlbums = () => {
               >
                 <div className="h-[222px] w-[174px] rounded-[8px] p-[8px] bg-[#1F1F1F]      shadow-md shadow-black/50 hover:shadow-lg hover:shadow-black/70 transition-all duration-300">
                   <header>
-                    <picture>
+                    <picture >
                       <img
                         src={album?.albumPoster}
                         alt=""

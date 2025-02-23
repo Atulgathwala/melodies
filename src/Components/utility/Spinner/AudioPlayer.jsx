@@ -1,7 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import { FaPlay, FaPause, FaStepBackward, FaStepForward } from "react-icons/fa";
-import { GrCaretNext } from "react-icons/gr";
-import { ImNext2 } from "react-icons/im";
 
 const AudioPlayer = ({ src, title, thumbnail }) => {
   const audioRef = useRef(new Audio(src));
