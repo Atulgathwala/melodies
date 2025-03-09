@@ -7,6 +7,7 @@ export let AlbumContextApi = createContext();
 
 const AlbumContext = ({ children }) => {
   let [allAlbums, setAllAlbums] = useState(null);
+  let [allSongs, setAllsongs] = useState(null);
 
   let fetchAllbums = async () => {
     try {
@@ -18,6 +19,13 @@ const AlbumContext = ({ children }) => {
       }));
 
       setAllAlbums(albums);
+
+      let allSongsList = albums
+        .map((album) => {
+          return album.songs || [];
+        })
+        .flat();
+      setAllsongs(allSongsList);
     } catch (error) {
       console.log(error);
       toast.error("failed to fetch the data");
@@ -29,7 +37,7 @@ const AlbumContext = ({ children }) => {
   }, []);
 
   return (
-    <AlbumContextApi.Provider value={{ allAlbums }}>
+    <AlbumContextApi.Provider value={{ allAlbums, allSongs }}>
       {children}
     </AlbumContextApi.Provider>
   );

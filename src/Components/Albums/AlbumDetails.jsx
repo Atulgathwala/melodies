@@ -1,7 +1,3 @@
-
-
-
-
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
@@ -31,6 +27,7 @@ const AlbumDetails = () => {
               alt=""
               className="w-[300px] h-[300px] rounded-[9px]"
             />
+
             <span className="absolute bg-[#EE10B0] text-[12px] rounded-[4px] p-[2px] flex items-center top-0 right-3 shadow-sm shadow-[#373737]">
               #Top
               <span className="text-[16px] font-[600]">
@@ -41,6 +38,11 @@ const AlbumDetails = () => {
           <aside className="flex items-center">
             <main className="h-[290px]">
               <header>
+                <p className="w-[700px] flex py-2">
+                  <span className="font-[600]">
+                    Description : {album?.description}
+                  </span>
+                </p>
                 <h1>
                   <span className="font-[600]">Title :</span>{" "}
                   <span className="text-[14px]">{album?.albumTitle}</span>
@@ -64,10 +66,6 @@ const AlbumDetails = () => {
                 <p className="py-1">
                   <span className="font-[600]">Album Type :</span>{" "}
                   <span className="text-[14px]">{album?.albumType}</span>
-                </p>
-                <p className="w-[700px] flex py-2">
-                  <span className="font-[600]">Description :</span>
-                  {album?.description}
                 </p>
               </header>
             </main>

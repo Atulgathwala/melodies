@@ -1,9 +1,9 @@
-
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { FaPause, FaPlay, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { SongContextApi } from "../Context/SongPlayerContext";
 import toast from "react-hot-toast";
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
+import { ImVolumeHigh, ImVolumeLow, ImVolumeMedium } from "react-icons/im";
 
 const MYAudioPlayer = () => {
   let { isPlaying, setIsPlaying, songs, setSongs, songIndex, setSongIndex } =
@@ -37,7 +37,7 @@ const MYAudioPlayer = () => {
       audio.removeEventListener("loadedmetadata", updateDuration);
       audio.removeEventListener("timeupdate", updateProgress);
     };
-  }, [songIndex, isPlaying, songToPlay]);
+  }, [songIndex]);
 
   let togglePlay = () => {
     let audio = audioRef.current;
@@ -109,11 +109,15 @@ const MYAudioPlayer = () => {
   };
 
   return (
-    <section className="bg-[#232323] text-white rounded-lg p-4 shadow-md shadow-[#0f0e0e] w-[78%] h-[140px] flex items-center fixed bottom-4 right-12 ">
+    <section className="bg-[#232323] text-white rounded-lg p-4 shadow-md shadow-[#0f0e0e] w-[78%] h-[140px] flex items-center fixed bottom-4 right-12 z-20">
       <div className="basis-[10%]    flex flex-col items-center justify-center gap-2">
         <picture>
           <img
-            src={songToPlay?.thumbnail}
+            src={
+              songToPlay?.thumbnail
+                ? songToPlay?.thumbnail
+                : "https://i.ibb.co/S747PBgD/music-Disc-BG.png"
+            }
             alt={songToPlay?.title}
             className={
               isPlaying
@@ -171,8 +175,12 @@ const MYAudioPlayer = () => {
               />
             </button>
           </div>
-          <section className="flex items-center gap-2 py-2  w-[150px] ">
-            <span>🔉</span>
+          <section className="flex items-center justify-between gap-2 py-2  w-[130px] border ">
+            <span className="">
+              {volume < 0.25 && <ImVolumeLow />}
+              {volume > 0.25 && volume < 0.5 && <ImVolumeMedium />}
+              {volume > 0.5 && <ImVolumeHigh />}
+            </span>
             <input
               type="range"
               min="0"

@@ -1,98 +1,78 @@
-import React from "react";
+import { Facebook, Instagram, Twitter, Phone } from "lucide-react";
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-8 ">
-      <div className="container mx-auto px-4 flex flex-row border gap-2">
-        <div className="w-full md:w-1/4 mb-6 md:mb-0 border">
-          <h3 className="text-lg font-semibold mb-4">About</h3>
+    <footer
+      className="bg-[#191919] text-white py-10 px-6 md:px-16 shadow-lg shadow-[black]"
+      id="aboutUs"
+    >
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 ">
+        {/* About Section */}
+        <div>
+          <h3 className="text-lg font-semibold mb-3">About</h3>
           <p className="text-gray-400">
-            Melodies is a website that has been created for over 5 years now and
-            it is one of the most famous music player websites in the world. In
-            this website, you can listen and download songs for free. Also, if
-            you want no limitation, you can buy our premium passes.
+            Melodies is a website that has been created for over{" "}
+            <span className="text-pink-500">5 years</span> now, and it is one of
+            the most famous music player websites in the world. In this website,
+            you can listen and download songs for free. Also, if you want no
+            limitation, you can buy our{" "}
+            <span className="text-blue-400">premium pass</span>.
           </p>
         </div>
 
-        <div className="w-full md:w-1/4 mb-6 md:mb-0 border">
-          <h3 className="text-lg font-semibold mb-4">Melodies</h3>
-          <ul className="text-gray-400">
-            <li className="mb-2">
-              <a href="#">Songs</a>
-            </li>
-            <li className="mb-2">
-              <a href="#">Radio</a>
-            </li>
-            <li className="mb-2">
-              <a href="#">Podcast</a>
-            </li>
-            <li className="mb-2">
-              <a href="#">Albums</a>
-            </li>
-            <li className="mb-2">
-              <a href="#">Trending</a>
-            </li>
+        {/* Melodies Links */}
+        <div>
+          <h3 className="text-lg font-semibold border-b-2 border-gray-500 inline-block mb-3">
+            Melodies
+          </h3>
+          <ul className="text-gray-400 space-y-2">
+            <li>Songs</li>
+            <li>Radio</li>
+            <li>Podcast</li>
           </ul>
         </div>
 
-        <div className="w-full md:w-1/4 mb-6 md:mb-0 border">
-          <h3 className="text-lg font-semibold mb-4">Access</h3>
-          <ul className="text-gray-400">
-            <li className="mb-2">
-              <a href="#">Explore</a>
-            </li>{" "}
-            {/* Corrected typo */}
-            <li className="mb-2">
-              <a href="#">Artists</a>
-            </li>
-            <li className="mb-2">
-              <a href="#">Playlists</a>
-            </li>
+        {/* Access Links */}
+        <div>
+          <h3 className="text-lg font-semibold border-b-2 border-gray-500 inline-block mb-3">
+            Access
+          </h3>
+          <ul className="text-gray-400 space-y-2">
+            <li>Explore</li>
+            <li>Artists</li>
+            <li>Playlists</li>
+            <li>Albums</li>
+            <li>Trending</li>
           </ul>
         </div>
 
-        <div className="w-full md:w-1/4">
-          <h3 className="text-lg font-semibold mb-4">Contact</h3>
-          <ul className="text-gray-400">
-            <li className="mb-2">
-              <a href="#">About</a>
-            </li>
-            <li className="mb-2">
-              <a href="#">Policy</a>
-            </li>
-            <li className="mb-2">
-              <a href="#">Social Media</a>
-            </li>
-            <li className="mb-2">
-              <a href="#">Support</a>
-            </li>
+        {/* Contact Links */}
+        <div>
+          <h3 className="text-lg font-semibold border-b-2 border-gray-500 inline-block mb-3">
+            Contact
+          </h3>
+          <ul className="text-gray-400 space-y-2">
+            <li>About</li>
+            <li>Policy</li>
+            <li>Social Media</li>
+            <li>Support</li>
           </ul>
         </div>
+      </div>
 
-        <div className="w-full mt-8 md:mt-0 md:w-full flex justify-between items-center">
-          {" "}
-          {/* Added flex and alignment */}
-          <span className="text-xl font-bold">Melodies</span>{" "}
-          {/* Replace with your logo */}
-          <div className="flex space-x-4">
-            <a href="#">
-              <i className="fab fa-facebook-f text-lg"></i>
-            </a>{" "}
-            {/* Social icons */}
-            <a href="#">
-              <i className="fab fa-instagram text-lg"></i>
-            </a>
-            <a href="#">
-              <i className="fab fa-twitter text-lg"></i>
-            </a>
-            <a href="#">
-              <i className="fas fa-phone text-lg"></i>
-            </a>
-          </div>
+      {/* Bottom Section */}
+      <div className="flex flex-col md:flex-row justify-between items-center mt-10">
+        <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">
+          Melodies
+        </h2>
+        {/* Social Icons */}
+        <div className="flex gap-4 text-gray-400 mt-4 md:mt-0">
+          <Facebook className="w-6 h-6 cursor-pointer hover:text-white" />
+          <Instagram className="w-6 h-6 cursor-pointer hover:text-white" />
+          <Twitter className="w-6 h-6 cursor-pointer hover:text-white" />
+          <Phone className="w-6 h-6 cursor-pointer hover:text-white" />
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

@@ -15,8 +15,10 @@ const MainSideBar = (props) => {
   let { authUser } = useContext(AUTHContextAPI);
   return (
     <section className="basis-[16%] bg-[#181818] pt-[48px] pb-[32px] pl-[64px] h-[100vh] pr-[32px] border-r-[2px] border-[#EE10B0] sticky top-0">
-      <header>
-        <img src="src/assets/images/sideBarImages/Frame 174.png" alt="" />
+      <header className="py-2">
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">
+          Melodies
+        </h2>
       </header>
 
       <article className="flex flex-col gap-[10px]">

@@ -3,8 +3,12 @@ import NavbarConatiner from "../NavbarComponents/NavbarConatiner";
 import { NavLink } from "react-router-dom";
 
 import TopAlbums from "../Albums/TopAlbums";
+import NewReleases from "../Albums/NewReleases";
+import MYAudioPlayer from "../utility/MYAudioPlayer";
 
 const Home = () => {
+
+
   return (
     <section className=" mainHomeSection ">
       <article className="bg-[url('https://i.ibb.co/6cRkVX1j/pixelcut-export.png')] bg-cover bg-center h-[75vh] w-[98%] py-4 px-8  rounded-2xl relative">
@@ -34,6 +38,10 @@ const Home = () => {
       {/* Top Albums Section */}
 
       <TopAlbums />
+      {/*  New Releases */}
+      <NewReleases />
+
+     
     </section>
   );
 };
