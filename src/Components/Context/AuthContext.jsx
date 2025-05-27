@@ -11,7 +11,7 @@ const AuthContext = ({ children }) => {
 
   useEffect(() => {
     onAuthStateChanged(__AUTH, (user) => {
-      if (user?.emailVerified && user?.accessToken) {
+      if (user?.emailVerified && user?.accessToken) { 
         setAuthUser(user);
         window.localStorage.setItem("TOKEN", user?.accessToken);
       }

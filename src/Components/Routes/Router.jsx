@@ -1,4 +1,3 @@
-import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../../App";
 import Home from "../pages/Home";
@@ -11,6 +10,13 @@ import PrivateRoutes from "./PrivateRoutes";
 import AdminContainer from "../admin/AdminContainer";
 import CreateAlbum from "../admin/CreateAlbum";
 import AlbumDetails from "../Albums/AlbumDetails";
+import Discover from "../pages/Discover";
+import TopAlbums from "../Albums/TopAlbums";
+import PopularArtist from "../Albums/PopularArtist";
+import YourFavourite from "../pages/YourFavourites";
+
+import YourPlayLists from "../pages/YourPlayLists";
+import AddPlayLists from "../pages/AddPlayLists";
 
 export const Routers = createBrowserRouter([
   {
@@ -23,15 +29,15 @@ export const Routers = createBrowserRouter([
       },
       {
         path: "discover",
-        element: <h1>Discover</h1>,
+        element: <Discover />,
       },
       {
         path: "albums",
-        element: <h1>Albums</h1>,
+        element: <TopAlbums />,
       },
       {
         path: "artists",
-        element: <h1>Artists</h1>,
+        element: <PopularArtist />,
       },
       {
         path: "recently-added",
@@ -47,15 +53,15 @@ export const Routers = createBrowserRouter([
       },
       {
         path: "your-favourite",
-        element: <h1>Your Favourite</h1>,
+        element: <YourFavourite />,
       },
       {
         path: "your-playlist",
-        element: <h1>Your Playlist</h1>,
+        element: <YourPlayLists />,
       },
       {
         path: "add-playlist",
-        element: <h1>Add Playlist</h1>,
+        element: <AddPlayLists />,
       },
 
       {

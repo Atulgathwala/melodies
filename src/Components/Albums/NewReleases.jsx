@@ -14,7 +14,7 @@ const NewReleases = () => {
   let { isPlaying, setIsPlaying, songs, setSongs, songIndex, setSongIndex } =
     useContext(SongContextApi);
 
-  console.log(allSongs);
+ 
 
   return (
     <section className="py-3 px-[10px] w-[80vw]">
@@ -65,7 +65,19 @@ const NewReleases = () => {
                   </div>
                 </NavLink>
               </SwiperSlide>
+              
             ))}
+
+             <SwiperSlide>
+                          <section className="h-[175px] w-[150px] flex flex-col gap-1 justify-center items-center cursor-pointer">
+                            <div className="h-[65px] w-[65px] flex  items-center justify-center rounded-full p-[8px] bg-[#1F1F1F] shadow-md shadow-black/50 hover:shadow-lg hover:shadow-black/70 transition-all duration-300  ">
+                              <span className="text-white text-lg font-bold text-[32px] flex justify-center items-center pb-1">
+                                +
+                              </span>
+                            </div>
+                            <span>View All</span>
+                          </section>
+                        </SwiperSlide>
           </Swiper>
         </main>
       </article>

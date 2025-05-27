@@ -31,7 +31,7 @@ const TopAlbums = () => {
                 <NavLink
                   to={`album-details/${album?.albumTitle.split(" ")}`}
                   state={{ album, ind }}
-                  className={"w-[174px]"}
+                  className="w-[174px]"
                 >
                   <div className="h-[222px] w-[174px] rounded-[8px] p-[8px] bg-[#1F1F1F] shadow-md shadow-black/50 hover:shadow-lg hover:shadow-black/70 transition-all duration-300">
                     <header>
@@ -53,9 +53,20 @@ const TopAlbums = () => {
                     </footer>
                   </div>
                 </NavLink>
-                
               </SwiperSlide>
             ))}
+
+            {/* Default Last Slide */}
+            <SwiperSlide>
+              <section className="h-[175px] w-[150px] flex flex-col gap-1 justify-center items-center cursor-pointer">
+                <div className="h-[65px] w-[65px] flex  items-center justify-center rounded-full p-[8px] bg-[#1F1F1F] shadow-md shadow-black/50 hover:shadow-lg hover:shadow-black/70 transition-all duration-300  ">
+                  <span className="text-white text-lg font-bold text-[32px] flex justify-center items-center pb-1">
+                    +
+                  </span>
+                </div>
+                <span>View All</span>
+              </section>
+            </SwiperSlide>
           </Swiper>
         </main>
       </article>

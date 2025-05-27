@@ -5,10 +5,10 @@ import { NavLink } from "react-router-dom";
 import TopAlbums from "../Albums/TopAlbums";
 import NewReleases from "../Albums/NewReleases";
 import MYAudioPlayer from "../utility/MYAudioPlayer";
+import TrendingSongs from "../Albums/TrendingSongs";
+import PopularArtist from "../Albums/PopularArtist";
 
 const Home = () => {
-
-
   return (
     <section className=" mainHomeSection ">
       <article className="bg-[url('https://i.ibb.co/6cRkVX1j/pixelcut-export.png')] bg-cover bg-center h-[75vh] w-[98%] py-4 px-8  rounded-2xl relative">
@@ -41,7 +41,11 @@ const Home = () => {
       {/*  New Releases */}
       <NewReleases />
 
-     
+      {/* Trending Songs */}
+      <TrendingSongs />
+
+      {/* Popular Artist */}
+      <PopularArtist />
     </section>
   );
 };

@@ -5,6 +5,7 @@ import Spinner from "../utility/Spinner/Spinner";
 import { __DB } from "../../backend/firebase";
 import toast from "react-hot-toast";
 import { addDoc, collection } from "firebase/firestore";
+import { v4 as uuidv4 } from "uuid";
 
 const CreateAlbum = () => {
   let initialAlBumState = {
@@ -19,6 +20,7 @@ const CreateAlbum = () => {
   };
 
   let initialSongsState = {
+    id: uuidv4(), // <-- this is the unique id
     songUrl: "",
     songName: "",
     thumbnail: "",
@@ -57,6 +59,7 @@ const CreateAlbum = () => {
     setSongState([
       ...songsState,
       {
+        id: uuidv4(), // <-- this is the unique id
         songUrl: "",
         songName: "",
         thumbnail: "",
@@ -152,6 +155,7 @@ const CreateAlbum = () => {
     );
     setSongState(updatedSongs);
   };
+
   let handleSubmitCreateAlbum = async (e) => {
     e.preventDefault();
     setIsloading(true);

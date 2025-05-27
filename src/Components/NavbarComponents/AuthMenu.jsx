@@ -37,6 +37,7 @@ const AuthMenu = () => {
   return (
     <section>
       <ul className="flex gap-5 items-center">
+        {}
         {authUser === null ? (
           <>
             {" "}
