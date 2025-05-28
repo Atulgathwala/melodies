@@ -32,6 +32,8 @@ const AlbumDetails = () => {
   };
 
   const handleAddToPlaylist = async (playlistId, song) => {
+    console.log("idd ", playlistId, song);
+
     await addSongToPlaylist(playlistId, song);
     toast.success(`${song.songName} added to playlist`);
     setShowDropdownIndex(null);

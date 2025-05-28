@@ -4,6 +4,9 @@ import toast from "react-hot-toast";
 import { __DB, __AUTH } from "../../backend/firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { addDoc } from "firebase/firestore";
+import { updateDoc } from "firebase/firestore";
+import { arrayUnion } from "firebase/firestore";
 
 export let AlbumContextApi = createContext();
 
@@ -93,8 +96,6 @@ const AlbumContext = ({ children }) => {
 
   let RandomSongsData = getRandomElements(allSongs, 6); // Get 4 random elements
 
-  console.log("Hii this is liked songs", likedSongs);
-
   useEffect(() => {
     fetchAllbums();
     setRandomSongs(RandomSongsData);
@@ -115,9 +116,6 @@ const AlbumContext = ({ children }) => {
         id: doc.id,
         ...doc?.data(),
       }));
-      console.log(AllLikedSongsOfAllusers);
-
-      console.log("user idddd  ", __AUTH.currentUser?.uid);
 
       let favSongs = AllLikedSongsOfAllusers.filter((el) => {
         return el.id == __AUTH.currentUser.uid;

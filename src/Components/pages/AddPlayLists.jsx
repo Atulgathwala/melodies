@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 
 import toast from "react-hot-toast";
 import { AlbumContextApi } from "../Context/AlbumContext";
+import { NavLink } from "react-router-dom";
 
 const AddPlayLists = () => {
   const [playlistName, setPlaylistName] = useState("");
@@ -14,7 +15,8 @@ const AddPlayLists = () => {
       return;
     }
 
-    await addUserPlaylist(playlistName, likedSongs); // You can pass selected songs too
+    await addUserPlaylist(playlistName, []); // initially empty
+
     toast.success("Playlist created successfully!");
     setPlaylistName("");
   };
@@ -29,12 +31,14 @@ const AddPlayLists = () => {
         className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-white"
         placeholder="Enter playlist name"
       />
-      <button
-        onClick={handleAddPlaylist}
-        className="bg-[#EE10B0] px-4 py-2 rounded hover:bg-pink-600"
-      >
-        Create
-      </button>
+      <NavLink to={"/your-playlist"}>
+        <button
+          onClick={handleAddPlaylist}
+          className="bg-[#EE10B0] px-4 py-2 rounded hover:bg-pink-600"
+        >
+          Create
+        </button>
+      </NavLink>
     </div>
   );
 };

@@ -17,6 +17,7 @@ import YourFavourite from "../pages/YourFavourites";
 
 import YourPlayLists from "../pages/YourPlayLists";
 import AddPlayLists from "../pages/AddPlayLists";
+import PlaylistSongsPage from "../pages/PlaylistSongsPage";
 
 export const Routers = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ export const Routers = createBrowserRouter([
       {
         path: "add-playlist",
         element: <AddPlayLists />,
+      },
+      {
+        path: "playlist-songs",
+        element: <PlaylistSongsPage />,
       },
 
       {
