@@ -158,7 +158,7 @@ const MainSideBar = (props) => {
                   <span>Recently Added</span>
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink
                   style={({ isActive }) =>
                     isActive
@@ -181,7 +181,7 @@ const MainSideBar = (props) => {
                   </span>
                   <span>Most Played</span>
                 </NavLink>
-              </li>
+              </li> */}
             </ul>
           </main>
         </div>

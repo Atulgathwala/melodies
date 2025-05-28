@@ -18,6 +18,8 @@ import YourFavourite from "../pages/YourFavourites";
 import YourPlayLists from "../pages/YourPlayLists";
 import AddPlayLists from "../pages/AddPlayLists";
 import PlaylistSongsPage from "../pages/PlaylistSongsPage";
+import RecentlyAdded from "../pages/RecentlyAdded";
+import AdminDashboard from "../admin/AdminDashboard";
 
 export const Routers = createBrowserRouter([
   {
@@ -42,7 +44,7 @@ export const Routers = createBrowserRouter([
       },
       {
         path: "recently-added",
-        element: <h1>RecentelyAdded</h1>,
+        element: <RecentlyAdded />,
       },
       {
         path: "most-played",
@@ -126,7 +128,7 @@ export const Routers = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <h1>Admin Dashboard</h1>,
+        element: <AdminDashboard />,
       },
       {
         path: "create-album",

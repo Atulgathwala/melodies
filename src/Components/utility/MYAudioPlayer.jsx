@@ -101,7 +101,6 @@ const MYAudioPlayer = () => {
     return `${minutes}:${seconds}`;
   };
 
-
   return (
     <section className="bg-[#232323] text-white rounded-lg p-4 shadow-md shadow-[#0f0e0e] w-[78%] h-[140px] flex items-center fixed bottom-4 right-12 z-20 ">
       {/* Close Button */}
